@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#form {
+  background-color: rgba(4, 10, 205, 0.2);
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+h2 {
+ color: #1F4587;
+ font-size: 25px;
+ font-family: "Comic Sans MS", "Comic Sans";
+}
+p {
+ hyphens: auto;
+ color: #1F4587;
+ font-size: 23px;
+ font-family: "Comic Sans MS", "Comic Sans";
+}
+h1 {
+  text-align: left;
+}
+
+h11 {
+  text-align: left;
+}
+
+input[type=text] {
+  padding: 10px;
+  width: 90%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+input[type=checkbox] {
+  padding: 10px;
+  width: 10%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: rgba(4, 10, 205, 0.9);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: rgba(4, 10, 205, 0.5);
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PrioMed</title>
+</head>
+
+<body background="Bground.jpg">
+<script src="http://code.jquery.com/jquery.js"></script>
+<script>
+    $(function() {
+      $('.exclusive').mousedown(function() {
+        var linked = $(this).data('linked');
+        $(':checkbox[data-linked="' + linked + '"]').prop('checked', false);
+      });
+    });
+    </script>
+
+<img STYLE="position:absolute; TOP:20px; LEFT:700px" src="priomed_logo.png"  width=100 height=100>
+<div class="alert alert-success success-message" style="display:none;">Form submitted successfully.</div>
+<b><u><center><font face=Comic Sans MS size=10 color=#1F4587>PrioMed</font></b></u></center>
+<h1><center><font face=Comic Sans MS size=5 color=#1F4587>Symptomatic Form</center></font></h1>
+<h1><center><font face=Comic Sans MS size=3 color=#1F4587>!Important! If your health condition does not allow you to complete this form, somoene from the medical staff should help you.</center></font></h1>
+
+<form id="form">
+  <div class="tab">
+        <h4><center><input type="text" class="form-control hour" placeholder="Current Hour"></center></h4>
+
+        <h1><center><font face=Comic Sans MS size=3 color=#1F4587>Personal Info</center></font></h1>
+        <h4><center><input type = "text" class="form-control firstname" placeholder = "First Name"> <input type = "text" class="form-control lastname" placeholder = "Last Name"></center></h4>
+
+        <h4><center><input type = "text" class="form-control age" placeholder = "Age"> <input type = "text" class="form-control birthdate" placeholder = "Birthdate"></center></h4>
+        <h4><center><input type = "text" class="form-control id" size = 30 placeholder = "ID number"> </center></h4>
+
+        <center><font face=Comic Sans MS size=5 color=#1F4587>M
+        <input type="checkbox" id="gender_Male" class="exclusive" data-linked="group1" value="1"/></font></center>
+        <center><font face=Comic Sans MS size=5 color=#1F4587>F</font>
+        <input type="checkbox" id="gender_Female" class="exclusive" data-linked="group1" value="2"/></center>
+
+
+        <h1><center><font face=Comic Sans MS size=3 color=#1F4587>Home Address</center></font></h1>
+        <h4><center><input type = "text" class="form-control state" placeholder = "State"> <input type = "text" class="form-control city" placeholder = "City"></center></h4>
+        <h4><center><input type = "text" class="form-control street" placeholder = "Street"> <input type = "text" class="form-control number" placeholder = "Number"></center></h4>
+        <h4><center><input type = "text" class="form-control telnum" size = 30 placeholder = "Telephone Number"></center></h4>
+  </div>
+
+  <div class="tab">
+    <h1><font face=Comic Sans MS size=5 color=#1F4587>Brought by:</h1>
+
+<input type="checkbox" id="Ambulance" class="exclusive" data-linked="group1" value="1"/><font face=Comic Sans MS size=5 color=#1F4587>Ambulance<br/>
+<input type="checkbox" id="Pers_means" class="exclusive" data-linked="group1" value="2"/><font face=Comic Sans MS size=5 color=#1F4587>Personal means<br/>
+
+<h1><font face=Comic Sans MS size=5 color=#1F4587>Brought from:</h1>
+
+<input type="checkbox" id="Home" class="exclusive" data-linked="group2" value="1"/><font face=Comic Sans MS size=5 color=#1F4587>Home<br/>
+<input type="checkbox" id="Public_place" class="exclusive" data-linked="group2" value="2"/><font face=Comic Sans MS size=5 color=#1F4587>Public place<br/>
+<input type="checkbox" id="Workplace" class="exclusive" data-linked="group2" value="3"/><font face=Comic Sans MS size=5 color=#1F4587>Workplace<br/>
+
+<h1><font face=Comic Sans MS size=5 color=#1F4587>Vital functions at takeover:</h1>
+
+<input type="checkbox" id="Deceased" class="exclusive" data-linked="group3" value="1"/><font face=Comic Sans MS size=5 color=#1F4587>Deceased<br/>
+<input type="checkbox" id="Cardiorespiratory_arrest" class="exclusive" data-linked="group3" value="2"/><font face=Comic Sans MS size=5 color=#1F4587>Cardiorespiratory arrest<br/>
+<input type="checkbox"id="Resuscitation" class="exclusive" data-linked="group3" value="3"/><font face=Comic Sans MS size=5 color=#1F4587>With resuscitation maneuvers in progress<br/>
+<input type="checkbox" id="Trauma" class="exclusive" data-linked="group3" value="4"/><font face=Comic Sans MS size=5 color=#1F4587>Trauma: <input type = "text" class="form-control trauma"> <br/>
+<input type="checkbox" id="Resuscitation_hour" class="exclusive" data-linked="group3" value="5"/><font face=Comic Sans MS size=5 color=#1F4587>Resuscitation hour: <input type = "text" class="form-control resHour"><br/>
+<input type="checkbox" id="Successful" class="exclusive" data-linked="group3" value="6"/><font face=Comic Sans MS size=5 color=#1F4587>Successful<br/>
+<input type="checkbox" id="Unsuccessful" class="exclusive" data-linked="group3" value="7"/><font face=Comic Sans MS size=5 color=#1F4587>Unsuccessful, decease hour: <input type = "text" class="form-control deceaseHour"><br/>
+<input type="checkbox" id="Not_Start_Resuscitation" class="exclusive" data-linked="group3" value="8"/><font face=Comic Sans MS size=5 color=#1F4587>The reason for not starting resuscitation: <input type = "text" class="form-control notStartRes"><br/>
+
+</div>
+
+<div class="tab">
+<div class="content">
+
+<div class="split left">
+  <div class="centered">
+
+          <p><h2>PATHOLOGICAL BACKGROUND</p></h2>
+
+          <p><input type="checkbox" name="background" value="Cardiac condition">
+          <label for="heart">Cardiac condition</p></label>
+
+          <p><input type="checkbox" name="background" value="Neurologic condition">
+          <label for="Head">Neurologic condition</p></label>
+
+          <p><input type="checkbox" name="background" value="Renal condition">
+          <label for="Renal">Renal condition</p></label>
+
+          <p><input type="checkbox" name="background" value="Pulmonary">
+          <label for="Lungs">Pulmonary</p></label>
+
+          <p><input type="checkbox" name="background" value="Tuberculosis">
+          <label for="Lungs">Tuberculosis</p></label>
+
+          <p><input type="checkbox" name="background" value="Gastritis">
+          <label for="Lungs">Gastritis</p></label>
+
+          <p><input type="checkbox" name="background" value="Hepatic">
+          <label for="Lungs">Hepatic</p></label>
+
+          <p><input type="checkbox" name="background" value="Diabetes">
+          <label for="Lungs">Diabetes</p></label>
+
+          <p><input type="checkbox" name="background" value="Contagious disease">
+          <label for="Lungs">Contagious disease</p></label>
+
+          <p><input type="checkbox" name="background" value="Sexually transmitted diseases">
+          <label for="Lungs">Sexually transmitted diseases</p></label>
+
+          <br>
+          <p>Allergic to <input type = "text" class="form-control allergies" placeholder = "Penicilin"> </p>
+
+
+        </div>
+</div>
+</div>
+</div>
+
+
+
+<div class="tab">
+<div class="content">
+
+<div class="split left">
+  <div class="centered">
+
+    <p><h2>GENERAL</p></h2>
+
+    <p>Height <input type = "text" class="form-control height" placeholder = "165 cm"> </p>
+    <p>Weight <input type = "text" class="form-control weight" placeholder = "55 kg"> </p>
+
+    <p><input type="checkbox" name="general" value="Feaver">
+    <label for="Lungs">Feaver</p></label>
+
+    <p><input type="checkbox" name="general" value="Dizziness">
+    <label for="Lungs">Dizziness</p></label><br>
+
+    <p><h2>GENERAL STATE</p></h2>
+
+    <p><input type="checkbox" name="general_state" class="exclusive" data-linked="group5" value="Normal">
+    <label for="Lungs">Normal</p></label>
+
+    <p><input type="checkbox" name="general_state" class="exclusive" data-linked="group5" value="Influenced">
+    <label for="Lungs">Influenced</p></label>
+
+    <p><input type="checkbox" name="general_state" class="exclusive" data-linked="group5" value="Altered">
+    <label for="Lungs">Altered</p></label>
+
+        </div>
+</div>
+</div>
+</div>
+
+
+<div class="tab">
+<div class="content">
+
+<div class="split left">
+  <div class="centered">
+          <p><h2>BURNS</h2></p>
+
+          <p><input type="checkbox" name="burns" class="exclusive" data-linked="group2" value="Flame">
+          <label for="Lungs">Flame</p></label>
+
+          <p><input type="checkbox" name="burns" class="exclusive" data-linked="group2" value="Solid">
+          <label for="Lungs">Solid</p></label>
+
+          <p><input type="checkbox" name="burns" class="exclusive" data-linked="group2" value="Liquid">
+          <label for="Lungs">Liquid</p></label>
+
+          <p><input type="checkbox" name="burns" class="exclusive" data-linked="group2" value="Chemical">
+          <label for="Lungs">Chemical</p></label>
+          <br>
+
+          <p><h2>PSYCHIATRIC</h2></p>
+
+          <p><input type="checkbox" name="psychiatric" class="exclusive" data-linked="group3" value="Depression">
+          <label for="Lungs">Depression</p></label>
+
+          <p><input type="checkbox" name="psychiatric" class="exclusive" data-linked="group3" value="Suicidal">
+          <label for="Lungs">Suicidal</p></label>
+
+          <p><input type="checkbox" name="psychiatric" class="exclusive" data-linked="group3" value="Hallucinations">
+          <label for="Lungs">Hallucinations</p></label>
+
+          <p><input type="checkbox" name="psychiatric" class="exclusive" data-linked="group3" value="Raving">
+          <label for="Lungs">Raving</p></label>
+          <br>
+
+          <p><h2>NEUROLOGIC</h2></p>
+
+          <p><input type="checkbox" name="neurologic" class="exclusive" data-linked="group4" value="Convulsions">
+          <label for="Lungs">Convulsions</p></label>
+
+          <p><input type="checkbox" name="neurologic" class="exclusive" data-linked="group4" value="Paralysis">
+          <label for="Lungs">Paralysis</p></label>
+          <br>
+          <p><h2>SKIN</h2></p>
+
+          <p><input type="checkbox" name="skin" class="exclusive" data-linked="group5" value="Hot">
+          <label for="Lungs">Hot</p></label>
+
+          <p><input type="checkbox" name="skin" class="exclusive" data-linked="group5" value="Cold">
+          <label for="Lungs">Cold</p></label>
+          <p><h2>EYES</h2></p>
+
+          <p><input type="checkbox" name="eyes" class="exclusive" data-linked="group6" value="Blindness">
+          <label for="Lungs">Blindness</p></label>
+
+          <p><input type="checkbox" name="eyes" class="exclusive" data-linked="group6" value="Visual disturbances">
+          <label for="Lungs">Visual disturbances</p></label>
+
+          <p><input type="checkbox" name="eyes" class="exclusive" data-linked="group6" value="Intraocular foreign body">
+          <label for="Lungs">Intraocular foreign body</p></label>
+
+          <br>
+
+          <p><h2>THORAX</h2></p>
+
+          <p><input type="checkbox" name="thorax" class="exclusive" data-linked="group7" value="Torax pain">
+          <label for="Lungs">Torax pain</p></label>
+
+          <p><input type="checkbox" name="thorax" class="exclusive" data-linked="group7" value="Cough">
+          <label for="Lungs">Cough</p></label>
+
+          <p><input type="checkbox" name="thorax" class="exclusive" data-linked="group7" value="Dyspnoea">
+          <label for="Lungs">Dyspnoea</p></label>
+          <br>
+          <h4><center><button type="submit" class="btn btn-primary">Submit</button></center></h4>
+
+        </div>
+</div>
+</div>
+</div>
+
+
+
+
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+
+</form>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-app.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-analytics.js"></script>
+ <script src="index.js"></script>
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+
+    document.getElementById("nextBtn").innerHTML = "Next";
+  
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("form").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+
+</body>
+
+</html><html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8"><meta name="Robots" content="NOINDEX " /></head><body></body>
+                <script type="text/javascript">
+                 var gearPage = document.getElementById('GearPage');
+                 if(null != gearPage)
+                 {
+                     gearPage.parentNode.removeChild(gearPage);
+                     document.title = "Error";
+                 }
+                 </script>
+                 </html>
