@@ -1,5 +1,5 @@
  var firebaseConfig = {
-    apiKey: "AIzaSyDVyEh1symKd5DPm8hRfpiVklHzXyoFJ3A",
+    apiKey: "*********************",
     authDomain: "priomed-2acc4.firebaseapp.com",
     databaseURL: "https://priomed-2acc4.firebaseio.com",
     projectId: "priomed-2acc4",
